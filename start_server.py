@@ -8,6 +8,5 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8000,
         reload=False,
-        log_level="DEBUG",
-        workers=4
+        log_level="DEBUG"
     )
