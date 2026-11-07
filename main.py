@@ -36,11 +36,10 @@ def delete_task(task_id: int):
 
 @app.put("/tasks/{task_id}")
 def update_task(task_id: int, task_dto: TaskDTO):
-    for task in tasks_db:
+    for index, task in enumerate(tasks_db):
         if task.id == task_id:
-            task.title = task_dto.title
-            task.description = task_dto.description
-            return task
+            tasks_db[index] = Task(title=task_dto.title, description=task_dto.description, id=task_id)
+            return tasks_db[index]
     raise HTTPException(status_code=404, detail="Task not found")
 
 @app.get("/health")
